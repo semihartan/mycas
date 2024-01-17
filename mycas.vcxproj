@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{CE846F63-FC2F-461B-AFAD-B8207235EDB0}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)include/private;$(ProjectDir)external\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <SDLCheck>false</SDLCheck>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
+      <Optimization>Disabled</Optimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(ProjectDir)external\lib\x64;$(ProjectDir)external\uchardet;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcord.dll.a;libgc.dll.a;libchardet.dll.a;libcharset.dll.a;libiconv.dll.a;uchardet.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PreBuildEvent>
+      <Command>ver.py</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>The script that is used to bump the semver version by parsing commit history.</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)include/private;$(ProjectDir)external\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(ProjectDir)external\lib\x64;$(ProjectDir)external\uchardet;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcord.dll.a;libgc.dll.a;libchardet.dll.a;libcharset.dll.a;libiconv.dll.a;uchardet.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="external\cwalk\cwalk.c" />
+    <ClCompile Include="src\adt\array.void.c" />
+    <ClCompile Include="src\adt\sb.c" />
+    <ClCompile Include="src\adt\vector.byte.c" />
+    <ClCompile Include="src\adt\vector.c" />
+    <ClCompile Include="src\adt\vector.int.c" />
+    <ClCompile Include="src\adt\vector.void.c" />
+    <ClCompile Include="src\comp\comp.c" />
+    <ClCompile Include="src\comp\dis.c" />
+    <ClCompile Include="src\comp\patcher.c" />
+    <ClCompile Include="src\disp.c" />
+    <ClCompile Include="src\error.c" />
+    <ClCompile Include="src\io\enc.c" />
+    <ClCompile Include="src\io\file.c" />
+    <ClCompile Include="src\adt\ht.c" />
+    <ClCompile Include="src\io\buffer.c" />
+    <ClCompile Include="src\io\norm.c" />
+    <ClCompile Include="src\io\strnorm.c" />
+    <ClCompile Include="src\lex\lexer.c" />
+    <ClCompile Include="src\lex\nextc.c" />
+    <ClCompile Include="src\main.c" />
+    <ClCompile Include="src\matrix.bool.c" />
+    <ClCompile Include="src\mcmatrix.c" />
+    <ClCompile Include="src\matrix.double.c" />
+    <ClCompile Include="src\mcobj.c" />
+    <ClCompile Include="src\mcmath.c" />
+    <ClCompile Include="src\mcprint.c" />
+    <ClCompile Include="src\parse\ast.c" />
+    <ClCompile Include="src\parse\lstack.c" />
+    <ClCompile Include="src\parse\parser.c" />
+    <ClCompile Include="src\parse\popen.c" />
+    <ClCompile Include="src\mcstr.c" />
+    <ClCompile Include="src\lex\token.c" />
+    <ClCompile Include="src\lex\scoord.c" />
+    <ClCompile Include="src\parse\semantic.c" />
+    <ClCompile Include="src\util.c" />
+    <ClCompile Include="src\vm\co.c" />
+    <ClCompile Include="src\vm\frame.c" />
+    <ClCompile Include="src\vm\nametab.c" />
+    <ClCompile Include="src\vm\opcode.c" />
+    <ClCompile Include="src\vm\sym.c" />
+    <ClCompile Include="src\vm\symtab.c" />
+    <ClCompile Include="src\vm\vm.c" />
+    <ClCompile Include="src\vm\vmexcept.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\config.h" />
+    <ClInclude Include="include\private\adt\vector.int.h" />
+    <ClInclude Include="include\private\compiler\patcher.h" />
+    <ClInclude Include="include\private\matrix.double.h" />
+    <ClInclude Include="include\mcmatrix.h" />
+    <ClInclude Include="include\mcobj.h" />
+    <ClInclude Include="include\private\adt\array.h" />
+    <ClInclude Include="include\private\adt\array_void.h" />
+    <ClInclude Include="include\private\adt\sb.h" />
+    <ClInclude Include="include\private\adt\vector.byte.h" />
+    <ClInclude Include="include\private\adt\vector.h" />
+    <ClInclude Include="include\private\adt\vector.void.h" />
+    <ClInclude Include="include\private\compiler\comp.h" />
+    <ClInclude Include="include\private\compiler\dis.h" />
+    <ClInclude Include="include\private\matrix.bool.h" />
+    <ClInclude Include="include\private\mcmath.h" />
+    <ClInclude Include="include\private\parse\anodes.h" />
+    <ClInclude Include="include\private\parse\ast.h" />
+    <ClInclude Include="include\private\error.h" />
+    <ClInclude Include="include\private\common.h" />
+    <ClInclude Include="include\private\io\buffer.h" />
+    <ClInclude Include="include\private\io\enc.h" />
+    <ClInclude Include="include\private\io\file.h" />
+    <ClInclude Include="include\private\adt\ht.h" />
+    <ClInclude Include="include\private\parse\lstack.h" />
+    <ClInclude Include="include\private\lex\scoord.h" />
+    <ClInclude Include="include\private\parse\semantic.h" />
+    <ClInclude Include="include\private\vm\co.h" />
+    <ClInclude Include="include\private\vm\frame.h" />
+    <ClInclude Include="include\private\vm\frames.h" />
+    <ClInclude Include="include\private\vm\nametab.h" />
+    <ClInclude Include="include\private\vm\ins.h" />
+    <ClInclude Include="include\private\io\io.h" />
+    <ClInclude Include="include\private\io\norm.h" />
+    <ClInclude Include="include\private\io\strnorm.h" />
+    <ClInclude Include="include\private\lex\nextc.h" />
+    <ClInclude Include="include\private\lex\stack.h" />
+    <ClInclude Include="include\private\lex\state.h" />
+    <ClInclude Include="include\private\lisp.h" />
+    <ClInclude Include="include\mc.h" />
+    <ClInclude Include="include\private\mcdef.h" />
+    <ClInclude Include="include\private\vm\obj.h" />
+    <ClInclude Include="include\private\parse\parser.h" />
+    <ClInclude Include="include\private\lex\tokens.h" />
+    <ClInclude Include="include\private\vm\opcode.h" />
+    <ClInclude Include="include\private\vm\opcodes.h" />
+    <ClInclude Include="include\private\vm\sym.h" />
+    <ClInclude Include="include\private\vm\symtab.h" />
+    <ClInclude Include="include\private\vm\vm.h" />
+    <ClInclude Include="include\private\util.h" />
+    <ClInclude Include="include\private\vm\vmexcept.h" />
+    <ClInclude Include="include\mcstr.h" />
+    <ClInclude Include="include\vector.h" />
+    <ClInclude Include="include\private\lex\lexer.h" />
+    <ClInclude Include="src\res\resource.h" />
+    <ClInclude Include="src\res\ver.h" />
+    <ClInclude Include="include\private\lex\token.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="src\res\mycas.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="matlab.g4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\OldCodeBackup.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

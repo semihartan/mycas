@@ -1,0 +1,65 @@
+<program> = <statement-list>
+
+<array-row> = [ <expression> { [","] <expression> } [";"] ]
+
+<array-matrix> = "[" { <array-row> } "]"
+
+<param-list> = <expression> { "," <expression> }
+
+<primary_expression> = "ID" 
+					| "NUMBER" 
+					| "STRING"
+          | ":"
+          | "end"
+					| <array-matrix>
+					| "(" expression ")"
+
+
+<postfix-expression> = <primary-expression> [ ( "(" [ <param-list> ] ")" ) | " ]
+
+<unary-expression> = { ( "-" | "+" ) } <postfix-expression>
+
+<power-expression> = <unary-expression> { ("^" | ".^") <unary-expression> }
+
+<multiplicative-expression> = <power-expression> { ("+" | "-" | ".*" | "./") <power-expression>}
+
+<additive-expression> = <multiplicative-expression> { ("+" | "-") <multiplicative_expression>}
+
+<relational-expression> = <additive-expression> { ("<" | "<=" |">" | ">=") <additive-expression> }
+
+<equality-expression> = <relational-expression> { ("==" | "~=") <relational-expression> }
+
+<and-expression> = <equality-expression> { "&&" <equality-expression> }
+
+<or-expression> = <and-expression> { "||" <and-expression> }
+
+<range-expression> = <or-expression> { ":" <or-expression> } ":" <or-expression>
+
+<assginment-expression> = <range-expression> "=" <range-expression>
+
+<selection-expression> = "(" <range-expression> ")"
+
+<switch-statement> = "switch" ["("] <selection-expr> [")"] { "case" <selection-expr> <statement-list> } [ "otherwise" <statement-list> ] "end"
+
+<if-statement> = "if" ["("] <range-expression> [")"] <statement-list> { "elseif" <statement-list> } [ "else" <statement-list> ] "end"
+
+<jump-statement> = "break" | "continue" | "return"
+
+<for-statement> = "for"  ["("] "ID" "=" <range-expression> [")"]  <statement-list> "end"
+
+<while-statement> = "while"  ["("] <range-expression> [")"]  <statement-list> "end"
+
+<function-declaration> = "function" [ <primary-expression> "=" ] "ID" "(" <param-list> ")" <statement-list> "end"
+
+<expression-terminator> = (";" | "," | "\n" | "EOF")
+
+<statement-expression>  = 
+						 ( <assignment-expression>
+						 | <if-statement>
+						 | <switch-statement>
+						 | <while-statement>
+						 | <for-statement>
+						 | <function-declaration>
+						 | <jump-declaration> ) [ <expression-terminator> ]
+
+<statement-list> = { <statement-expression> }
